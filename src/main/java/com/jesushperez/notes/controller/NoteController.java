@@ -3,10 +3,7 @@ package com.jesushperez.notes.controller;
 import com.jesushperez.notes.model.Note;
 import com.jesushperez.notes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,11 @@ public class NoteController {
     @RequestMapping("/notes")
     public List<Note> getAllNotes() {
         return noteService.getAllNotes();
+    }
+
+    // Returns individual note
+    @RequestMapping("/notes/{id}")
+    public Note getNote(@PathVariable String id) {
+        return noteService.getNote(id);
     }
 }

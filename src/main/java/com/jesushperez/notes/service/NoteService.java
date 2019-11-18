@@ -19,10 +19,15 @@ public class NoteService {
         noteRepository.save(note);
     }
 
-    // Gets all notes from DB
+    // Returns all notes from DB
     public List<Note> getAllNotes() {
         List<Note> notes = new ArrayList<>();
         noteRepository.findAll().forEach(notes::add);
         return notes;
+    }
+
+    // Returns individual note from DB
+    public Note getNote(String id) {
+        return noteRepository.findById(id).get();
     }
 }
