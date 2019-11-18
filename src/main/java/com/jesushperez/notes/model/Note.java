@@ -1,5 +1,7 @@
 package com.jesushperez.notes.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -55,11 +57,12 @@ public class Note {
         this.content = content;
     }
 
-    public boolean isPinned() {
+    @JsonProperty(value="isPinned")
+    public boolean getPinned() {
         return isPinned;
     }
 
-    public void setPinned(boolean pinned) {
-        isPinned = pinned;
+    public void setPinned(boolean isPinned) {
+        this.isPinned = isPinned;
     }
 }
