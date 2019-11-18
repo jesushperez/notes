@@ -37,4 +37,10 @@ public class NoteController {
         noteService.updateNote(note);
     }
 
+    // Deletes individual note
+    @RequestMapping(method=RequestMethod.DELETE, value="/notes/{id}")
+    public void deleteNote(@PathVariable String id) {
+        noteService.deleteNote(id);
+    }
+
 }
