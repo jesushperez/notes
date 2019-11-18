@@ -1,7 +1,12 @@
 package com.jesushperez.notes.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Note {
 
+    @Id
     private String id;
     private String date;
     private String title;
