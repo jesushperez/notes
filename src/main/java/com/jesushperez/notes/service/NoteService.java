@@ -30,4 +30,9 @@ public class NoteService {
     public Note getNote(String id) {
         return noteRepository.findById(id).get();
     }
+
+    // Updates note to DB
+    public void updateNote(Note note) {
+        noteRepository.save(note);
+    }
 }

@@ -30,4 +30,11 @@ public class NoteController {
     public Note getNote(@PathVariable String id) {
         return noteService.getNote(id);
     }
+
+    // Updates individual note
+    @RequestMapping(method=RequestMethod.PUT, value="/notes/{id}")
+    public void updateNote(@RequestBody Note note) {
+        noteService.updateNote(note);
+    }
+
 }
