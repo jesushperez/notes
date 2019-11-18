@@ -13,6 +13,8 @@ public class Note {
     private String content;
     private boolean isPinned;
 
+    public Note() {}
+
     public Note(String id, String date, String title, String content, boolean isPinned) {
         this.id = id;
         this.date = date;
