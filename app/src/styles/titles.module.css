@@ -1,0 +1,10 @@
+@value fonts: "./fonts.css";
+@value font-title from fonts;
+
+.title {
+  font-family: font-title;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  composes: title;
+}
