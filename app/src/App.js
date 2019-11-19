@@ -1,11 +1,19 @@
 import React from 'react';
+import {
+   BrowserRouter as Router,
+   Switch, Route
+} from 'react-router-dom';
+import Home from './components/Home';
 import './styles/base.css';
-import styles from './styles/titles.module.css';
 
 function App() {
   return (
     <div className="App">
-      <h1 className={styles.h1}>Hello, World</h1>
+      <Router>
+        <Switch>
+          <Route exact path="/" render={() => <Home />} />
+        </Switch>
+      </Router>
     </div>
   );
 }
