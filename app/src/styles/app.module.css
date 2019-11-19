@@ -1,0 +1,7 @@
+@value colors: "./colors.css";
+@value primary, primary-light, secondary, customBlack, customWhite from colors;
+
+.app {
+  margin: 0 auto;
+  max-width: 800px;
+}

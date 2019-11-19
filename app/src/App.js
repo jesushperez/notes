@@ -5,10 +5,11 @@ import {
 } from 'react-router-dom';
 import Home from './components/Home';
 import './styles/base.css';
+import style from './styles/app.module.css'
 
 function App() {
   return (
-    <div className="App">
+    <div className={style.app}>
       <Router>
         <Switch>
           <Route exact path="/" render={() => <Home />} />
