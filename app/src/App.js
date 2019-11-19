@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/base.css';
 import styles from './styles/titles.module.css';
 
 function App() {
