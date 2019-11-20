@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
    BrowserRouter as Router,
    Switch, Route
 } from 'react-router-dom';
 import Home from './components/Home';
-import './styles/base.css';
-import style from './styles/app.module.css'
 
 function App() {
+  const [notes, setNotes] = useState([
+    {
+      id: "1",
+      date: "May 11, 2018",
+      title: "Note 1 title",
+      content: "Note 1 content.",
+      isPinned: "true"
+    },
+    {
+      id: "2",
+      date: "June 23, 2019",
+      title: "Note 2 title",
+      content: "Note 2 content.",
+      isPinned: "true"
+    },
+    {
+      id: "3",
+      date: "December 13, 2019",
+      title: "Note 3 title",
+      content: "Note 3 content.",
+      isPinned: "true"
+    }
+  ]);
+
   return (
-    <div className={style.app}>
+    <div>
       <Router>
         <Switch>
-          <Route exact path="/" render={() => <Home />} />
+          <Route exact path="/" render={() => <Home notes={notes} />} />
         </Switch>
       </Router>
     </div>
