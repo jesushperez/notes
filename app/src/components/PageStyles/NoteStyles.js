@@ -48,8 +48,6 @@ const Title = styled.h3`
   padding-right: 20px;
 `;
 
-const Menus = styled.p``;
-
 const Content = styled.p`
   color: ${customBlack};
   font-family: ${fontBody};

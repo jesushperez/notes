@@ -20,7 +20,7 @@ const Note = ({note}) => {
         <FeedButton 
           btnColor={primary} 
           flexGrow='3' 
-          tabIndex={0}>Open Note</FeedButton>
+          tabIndex={0}>View</FeedButton>
         <FeedButton 
           btnColor={secondary} 
           flexGrow='1' 
