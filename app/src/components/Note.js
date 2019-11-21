@@ -1,4 +1,7 @@
 import React from 'react';
+import { primary, secondary } from './Variables';
+import { Wrapper, Title, Content, ButtonsWrapper} from './PageStyles/NoteStyles';
+import FeedButton from './reusable/FeedButton';
 
 const Note = ({note}) => {
 
@@ -10,10 +13,20 @@ const Note = ({note}) => {
   }
 
   return (
-    <div>
-      <h3>{note.title}</h3>
-      <p>{content}</p>
-    </div>
+    <Wrapper>
+      <Title>{note.title}</Title>
+      <Content>{content}</Content>
+      <ButtonsWrapper>
+        <FeedButton 
+          btnColor={primary} 
+          flexGrow='3' 
+          tabIndex={0}>Open Note</FeedButton>
+        <FeedButton 
+          btnColor={secondary} 
+          flexGrow='1' 
+          tabIndex={0}>X</FeedButton>
+      </ButtonsWrapper>
+    </Wrapper>
   );
 }
 
