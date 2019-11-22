@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { primary, fontBody } from '../Variables';
+import { primary, fontBody, fontTitle } from '../Variables';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
@@ -37,7 +37,7 @@ const InputTitle = styled.textarea`
   background-color: none;
   display: block;
   font-weight: bold;
-  font-family: 'Roboto', sans-serif;
+  font-family: ${fontTitle};
   margin-top: 50px;
   margin-bottom: 25px;
   resize: none;
@@ -50,7 +50,7 @@ const InputTitle = styled.textarea`
 
 const InputContent = styled.textarea`
   resize: none;
-  font-family: 'Open Sans', sans-serif;
+  font-family: ${fontBody};
   font-size: 1rem;
   color: black;
   background-color: transparent;
