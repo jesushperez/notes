@@ -76,6 +76,7 @@ const NotePage = ({note}) => {
     border-radius: 5px;
     border: 2px solid ${primary};
     margin-right: 5px;
+    margin-top: 25px;
     display: inline-block;
     box-shadow: 0 0 2px #aaaaaa;
     font-size: .9rem;

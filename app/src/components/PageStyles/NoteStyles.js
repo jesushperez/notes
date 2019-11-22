@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { primary, primaryLight, secondary, fontTitle, fontBody, customBlack, customWhite } from '../Variables';
+import { primary, fontTitle, fontBody, customBlack } from '../Variables';
 
 const Wrapper = styled.div`
   background-color: #FFFFFF;
