@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import NotePage from './components/NotePage';
+import NewNotePage from './components/NewNotePage';
 import './base.css';
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
         <Switch>
           <Route exact path="/" render={() => <HomePage notes={notes} />} />
           <Route exact path="/notes/:id" render={({match}) => <NotePage note={noteById(match.params.id)} />} />
-
+          <Route exact path="/new-note" render={() => <NewNotePage />} />
         </Switch>
       </Router>
     </div>

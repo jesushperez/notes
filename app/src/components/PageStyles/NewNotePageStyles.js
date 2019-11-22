@@ -29,7 +29,7 @@ const BackLink = styled(Link)`
   }
 `;
 
-const NoteTitle = styled.textarea`
+const InputTitle = styled.textarea`
   border: none;
   background-color: transparent;
   color: black;
@@ -48,7 +48,7 @@ const NoteTitle = styled.textarea`
   }
 `;
 
-const NoteContent = styled.textarea`
+const InputContent = styled.textarea`
   resize: none;
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
@@ -57,7 +57,6 @@ const NoteContent = styled.textarea`
   border: none;
   font-weight: 300;
   line-height: 1.5;
-  outline: none;
 
   &:focus {
     outline: none;
@@ -65,25 +64,25 @@ const NoteContent = styled.textarea`
 `;
 
 const SaveButton = styled.button`
-  color: #FFFFFF;
-  padding: 8px;
-  text-decoration: none;
-  font-family: ${fontBody};
-  background-color: ${primary};
-  border-radius: 5px;
-  border: 2px solid ${primary};
-  margin-right: 5px;
-  margin-top: 25px;
-  display: inline-block;
-  box-shadow: 0 0 2px #aaaaaa;
-  font-size: .9rem;
-  transition-duration: .2s;
+    color: #FFFFFF;
+    padding: 8px;
+    text-decoration: none;
+    font-family: ${fontBody};
+    background-color: ${primary};
+    border-radius: 5px;
+    border: 2px solid ${primary};
+    margin-right: 5px;
+    margin-top: 25px;
+    display: inline-block;
+    box-shadow: 0 0 2px #aaaaaa;
+    font-size: .9rem;
+    transition-duration: .2s;
 
-  &:hover {
-    cursor: pointer;
-    background-color: #FFFFFF;
-    color: ${primary};
-  }
-`;
+    &:hover {
+      cursor: pointer;
+      background-color: #FFFFFF;
+      color: ${primary};
+    }
+  `;
 
-export {Wrapper, BackLink, NoteTitle, NoteContent, SaveButton };
+export { Wrapper, InputTitle, InputContent, BackLink, SaveButton };

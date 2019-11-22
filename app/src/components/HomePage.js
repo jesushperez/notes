@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from 'styled-components';
 import NotesFeed from './NotesFeed';
 import PageTitle from './reusable/PageTitle';
@@ -12,7 +13,7 @@ const Home = ({notes}) => {
     margin-bottom: 50px;
   `;
 
-  const NewNote = style.a`
+  const NewNote = style(Link)`
     color: #FFFFFF;
     padding: 8px;
     text-decoration: none;
@@ -51,7 +52,7 @@ const Home = ({notes}) => {
     <div>
       <PageTitle>My Notes</PageTitle>
       <Menus>
-        <NewNote>New Note</NewNote>
+        <NewNote to="/new-note">New Note</NewNote>
         <Search type="text" placeholder="&#x1F50D; Search a note" />
       </Menus>
       <NotesFeed title="Pinned Notes" notes={pinnedNotes} />
