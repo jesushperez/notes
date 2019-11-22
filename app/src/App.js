@@ -8,18 +8,45 @@ import HomePage from './components/HomePage';
 import NotePage from './components/NotePage';
 import NewNotePage from './components/NewNotePage';
 import './base.css';
+import shortid from 'shortid';
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [newNote, setNewNote] = useState([]);
+  const serverUrl = 'http://localhost:3001/notes';
 
   useEffect(() => {
-    const serverUrl = 'http://localhost:3001/notes';
     axios
       .get(serverUrl)
       .then(response => {
         setNotes(response.data);
       })
   }, []);
+
+  const handleTitleChange = (e) => {
+    setNewNote({...newNote, title: e.target.value});
+  }
+
+  const handleContentChange = (e) => {
+    setNewNote({...newNote, content: e.target.value});
+  }
+
+  const addNote = (e) => {
+    e.preventDefault();
+    if (newNote.title === undefined && newNote.content === undefined) {
+      setNewNote('');
+    } else {
+      let today = new Date().toLocaleDateString();
+      let noteObject = {id: shortid.generate(), "date": today, ...newNote, isPinned: false};
+      axios
+        .post(serverUrl, noteObject)
+        .then(response => {
+          console.log(response);
+          setNotes(notes.concat(response.data));
+          setNewNote('');
+        })      
+    }
+  }
 
   const autoExpand = function(field) {
     field.style.height = 'inherit';
@@ -49,7 +76,7 @@ function App() {
         <Switch>
           <Route exact path="/" render={() => <HomePage notes={notes} />} />
           <Route exact path="/notes/:id" render={({match}) => <NotePage note={noteById(match.params.id)} />} />
-          <Route exact path="/new-note" render={() => <NewNotePage />} />
+          <Route exact path="/new-note" render={() => <NewNotePage onTitleChange={handleTitleChange} onContentChange={handleContentChange} onClick={addNote} />} />
         </Switch>
       </Router>
     </div>

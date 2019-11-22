@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper, InputTitle, InputContent, BackLink, SaveButton } from './PageStyles/NewNotePageStyles';
 
-const NewNotePage = () => {
+const NewNotePage = ({onTitleChange, onContentChange, onClick}) => {
 
 
   return (
@@ -11,14 +11,16 @@ const NewNotePage = () => {
       <InputTitle 
         wrap="soft" 
         placeholder="Type your note title..." 
+        onChange={onTitleChange} 
       ></InputTitle>
 
       <InputContent
         wrap="soft"
         placeholder="Type your note..."
+        onChange={onContentChange}
       ></InputContent>
 
-      <SaveButton>save</SaveButton>
+      <SaveButton onClick={onClick}>save</SaveButton>
     </Wrapper>
   );
 }
