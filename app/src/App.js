@@ -13,6 +13,7 @@ import noteService from './services/notes';
 function App() {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     noteService
@@ -28,6 +29,10 @@ function App() {
 
   const handleContentChange = (e) => {
     setNewNote({...newNote, content: e.target.value});
+  }
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
   }
 
   const addNote = (e) => {
@@ -112,11 +117,24 @@ function App() {
       .then(setNotes(notes.filter(note => note.id !== noteId)))
   }
 
+  const filteredNoteList = notes.filter(note => {
+    let title = note.title;
+    let content = note.content;
+    if (title !== undefined)
+      title = title.toLowerCase();
+    if (content !== undefined)
+      content = content.toLowerCase();
+    let searchable = title + ' ' + content;
+
+    let searched = searchTerm.toLowerCase();
+    return searchable.includes(searched);
+  });
+
   return (
     <div>
       <Router>
         <Switch>
-          <Route exact path="/" render={() => <HomePage notes={notes} deleteNote={deleteNote} />} />
+          <Route exact path="/" render={() => <HomePage notes={filteredNoteList} deleteNote={deleteNote} handleSearchChange={handleSearchChange} searchTerm={searchTerm} />} />
           <Route exact path="/notes/:id" render={({match}) => <NotePage note={noteById(match.params.id)} togglePinned={() => togglePinned(match.params.id)} onTitleChange={handleTitleChange} onContentChange={handleContentChange} updateNote={updateNote} />} />
           <Route exact path="/new-note" render={() => <NewNotePage onTitleChange={handleTitleChange} onContentChange={handleContentChange} onClick={addNote} />} />
         </Switch>

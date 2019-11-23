@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import style from 'styled-components';
+import styled from 'styled-components';
 import NotesFeed from './NotesFeed';
 import PageTitle from './reusable/PageTitle';
 import pinnedFilter from '../helper/pinnedFilter';
 import { fontBody, primary } from './Variables';
 
-const Home = ({notes, deleteNote}) => {
-
-  const Menus = style.div`
+const Menus = styled.div`
     margin-top: 10px;
     margin-bottom: 50px;
   `;
 
-  const NewNote = style(Link)`
+  const NewNote = styled(Link)`
     color: #FFFFFF;
     padding: 8px;
     text-decoration: none;
@@ -35,7 +33,7 @@ const Home = ({notes, deleteNote}) => {
     }
   `;
 
-  const Search = style.input`
+  const Search = styled.input`
     padding:  8px;
     display: inline-block;
 
@@ -44,6 +42,10 @@ const Home = ({notes, deleteNote}) => {
       max-width: 300px;
     }
   `;
+
+const Home = ({notes, deleteNote, handleSearchChange, searchTerm}) => {
+
+  
 
   let pinnedNotes = pinnedFilter(notes, true);
   let otherNotes = pinnedFilter(notes, false);
@@ -80,7 +82,11 @@ const Home = ({notes, deleteNote}) => {
       <PageTitle>My Notes</PageTitle>
       <Menus>
         <NewNote to="/new-note">New Note</NewNote>
-        <Search type="text" placeholder="&#x1F50D; Search a note" />
+        <Search 
+          type="text" 
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder="&#x1F50D; Search a note" />
       </Menus>
       {showPinned}
       {showOthers}
