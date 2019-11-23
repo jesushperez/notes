@@ -1,12 +1,15 @@
 import React from 'react';
-import { Wrapper, BackLink, NoteTitle, NoteContent, SaveButton } from './PageStyles/NotePageStyles';
+import { Wrapper, BackLink, PinButton, NoteTitle, NoteContent, SaveButton } from './PageStyles/NotePageStyles';
 
-const NotePage = ({note}) => {
-
+const NotePage = ({note, togglePinned}) => {
+  let pinLabel = note.isPinned ? 'Unpin Note' : 'Pin Note';
+  
   
   return(
     <Wrapper>
       <BackLink className="note-page__back-btn" to="/">back</BackLink>
+
+      <PinButton onClick={togglePinned}>{ pinLabel }</PinButton>
 
       <NoteTitle 
         wrap="soft" 

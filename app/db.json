@@ -26,65 +26,20 @@
       "date": "November 22, 2019",
       "title": "Makin' Pancakes, Makin' Bacon Pancakes",
       "content": "Bacon ipsum dolor amet rump pastrami porchetta, pancetta burgdoggen pork chop tongue shankle ball tip filet mignon leberkas ground round short ribs.",
-      "isPinned": true
-    },
-    {
-      "title": "New Note.",
-      "content": "This is my new note. It's short.",
-      "id": "hNRFsI9-"
-    },
-    {
-      "title": "New Note.",
-      "content": "This is a new note.",
-      "id": "kzpH-lSj"
-    },
-    {
-      "title": "sdf",
-      "content": "fds",
-      "id": "VslUVWWB"
-    },
-    {
-      "title": "New note",
-      "content": "This is a new note.",
-      "id": "JKtwJeDX"
-    },
-    {
-      "title": "asdf",
-      "content": "fdasd asdf",
-      "id": "LAgyi_PF"
-    },
-    {
-      "title": "fasd fasdf",
-      "content": "fds asdfasdf",
-      "id": "WEA0meTB",
       "isPinned": false
     },
     {
-      "title": "asdf asdf",
-      "content": "fdasdfa sdfasdf",
-      "id": "kHqA2pMN",
-      "date": "11/21/2019",
+      "id": "fC3evfB5",
+      "date": "11/22/2019",
+      "title": "Hello, I am a new note. ",
+      "content": "I am the contents of the new note.",
       "isPinned": false
     },
     {
-      "title": "This is my new note.",
-      "content": "This is my new note content.",
-      "id": "uDP50NOB",
-      "date": "11/21/2019",
-      "isPinned": false
-    },
-    {
-      "id": "-TVb1Oj9",
-      "date": "11/21/2019",
-      "isPinned": false,
-      "title": "A test note",
-      "content": "This is a new, test note."
-    },
-    {
-      "id": "qu2eLgBA",
-      "date": "11/21/2019",
-      "title": "Another test note",
-      "content": "This is another note, testing the json.",
+      "id": "K-NBK7Cs",
+      "date": "11/22/2019",
+      "title": "Note test note.",
+      "content": "This are the contents of the new test note.",
       "isPinned": false
     }
   ]

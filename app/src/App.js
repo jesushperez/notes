@@ -70,12 +70,23 @@ function App() {
   const noteById = (id) =>
     notes.find(note => note.id.toString() === id.toString());
 
+  const togglePinned = id => {
+    let note = notes.find(note => note.id === id);
+    let changedNote = {...note, isPinned: !note.isPinned};
+
+    axios
+      .put(`${serverUrl}/${id}`, changedNote)
+      .then(response => {
+        setNotes(notes.map(note => note.id !== id ? note : response.data))
+      });
+  }
+
   return (
     <div>
       <Router>
         <Switch>
           <Route exact path="/" render={() => <HomePage notes={notes} />} />
-          <Route exact path="/notes/:id" render={({match}) => <NotePage note={noteById(match.params.id)} />} />
+          <Route exact path="/notes/:id" render={({match}) => <NotePage note={noteById(match.params.id)} togglePinned={() => togglePinned(match.params.id)} />} />
           <Route exact path="/new-note" render={() => <NewNotePage onTitleChange={handleTitleChange} onContentChange={handleContentChange} onClick={addNote} />} />
         </Switch>
       </Router>

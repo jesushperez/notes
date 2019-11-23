@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { primary, fontTitle, fontBody } from '../Variables';
+import { primary, primaryLight, secondary, fontTitle, fontBody } from '../Variables';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
@@ -26,6 +26,28 @@ const BackLink = styled(Link)`
     cursor: pointer;
     background-color: #FFFFFF;
     color: ${primary};
+  }
+`;
+
+const PinButton = styled.button`
+  color: #FFFFFF;
+  padding: 7px;
+  text-decoration: none;
+  font-family: ${fontBody};
+  background-color: ${primaryLight};
+  border-radius: 5px;
+  border: 2px solid ${primaryLight};
+  margin-right: 5px;
+  display: inline-block;
+  box-shadow: 0 0 2px #aaaaaa;
+  font-size: .9rem;
+  transition-duration: .2s;
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid ${secondary};
+    background-color: ${secondary};
+    color: #FFFFFF;
   }
 `;
 
@@ -86,4 +108,4 @@ const SaveButton = styled.button`
   }
 `;
 
-export {Wrapper, BackLink, NoteTitle, NoteContent, SaveButton };
+export {Wrapper, BackLink, PinButton, NoteTitle, NoteContent, SaveButton };
