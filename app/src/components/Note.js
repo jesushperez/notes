@@ -6,32 +6,13 @@ import { Wrapper, Title, Content, ButtonsWrapper} from './PageStyles/NoteStyles'
 
 const Note = ({note}) => {
 
-  const StyledLink = styled(Link)`
-  color: ${customWhite};
-  transition-duration: .3s;
-  border: 2px solid ${props => props.btnColor};
-  background-color: ${props => props.btnColor};
-  flex-grow: ${props => props.flexGrow};
-  padding: 8px;
-  text-align: center;
-  text-decoration: none;
-  margin-top: auto;
-  font-family: ${fontBody};
-
-  &:hover {
-    cursor: pointer;
-    color: ${props => props.btnColor};
-    background-color: ${customWhite};
-  }
-`;
-
 const ViewButton = styled(Link)`
   color: ${customWhite};
   transition-duration: .3s;
   border: 2px solid ${primary};
   background-color: ${primary};
   flex-grow: 3;
-  padding: 8px;
+  padding: 6px;
   text-align: center;
   text-decoration: none;
   margin-top: auto;
@@ -44,7 +25,7 @@ const ViewButton = styled(Link)`
   }
 `;
 
-const DeleteButton = styled.a`
+const DeleteButton = styled.button`
   color: ${customWhite};
   transition-duration: .3s;
   border: 2px solid ${secondary};

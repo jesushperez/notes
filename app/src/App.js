@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import {
    BrowserRouter as Router,
    Switch, Route
@@ -9,17 +8,17 @@ import NotePage from './components/NotePage';
 import NewNotePage from './components/NewNotePage';
 import './base.css';
 import shortid from 'shortid';
+import noteService from './services/notes';
 
 function App() {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState([]);
-  const serverUrl = 'http://localhost:3001/notes';
 
   useEffect(() => {
-    axios
-      .get(serverUrl)
-      .then(response => {
-        setNotes(response.data);
+    noteService
+      .getAll()
+      .then(initialNotes => {
+        setNotes(initialNotes);
       })
   }, []);
 
@@ -38,11 +37,10 @@ function App() {
     } else {
       let today = new Date().toLocaleDateString();
       let noteObject = {id: shortid.generate(), "date": today, ...newNote, isPinned: false};
-      axios
-        .post(serverUrl, noteObject)
-        .then(response => {
-          console.log(response);
-          setNotes(notes.concat(response.data));
+      noteService
+        .create(noteObject)
+        .then(returnedNotes => {
+          setNotes(notes.concat(returnedNotes));
           setNewNote('');
         })      
     }
@@ -74,10 +72,10 @@ function App() {
     let note = notes.find(note => note.id === id);
     let changedNote = {...note, isPinned: !note.isPinned};
 
-    axios
-      .put(`${serverUrl}/${id}`, changedNote)
-      .then(response => {
-        setNotes(notes.map(note => note.id !== id ? note : response.data))
+    noteService
+      .update(id, changedNote)
+      .then(returnedNote => {
+        setNotes(notes.map(note => note.id !== id ? note : returnedNote))
       });
   }
 

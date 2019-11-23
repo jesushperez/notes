@@ -6,7 +6,7 @@ import PageTitle from './reusable/PageTitle';
 import pinnedFilter from '../helper/pinnedFilter';
 import { fontBody, primary } from './Variables';
 
-const Home = ({notes}) => {
+const Home = ({notes, deleteNote}) => {
 
   const Menus = style.div`
     margin-top: 10px;
@@ -55,8 +55,8 @@ const Home = ({notes}) => {
         <NewNote to="/new-note">New Note</NewNote>
         <Search type="text" placeholder="&#x1F50D; Search a note" />
       </Menus>
-      <NotesFeed title="Pinned Notes" notes={pinnedNotes} />
-      <NotesFeed title="Other Notes" notes={otherNotes} />
+      <NotesFeed title="Pinned Notes" notes={pinnedNotes} deleteNote={deleteNote} />
+      <NotesFeed title="Other Notes" notes={otherNotes} deleteNote={deleteNote} />
     </div>
   );
 }
