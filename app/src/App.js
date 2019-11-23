@@ -79,12 +79,45 @@ function App() {
       });
   }
 
+  const updateNote = (e) => {
+    e.preventDefault();
+    let noteId = e.target.dataset.id;
+    let oldNote = notes.find(note => note.id === noteId);
+    let newTitle = newNote.title;
+    if(newNote.title === undefined)
+      newTitle = oldNote.title;
+    let newContent = newNote.content;
+    if(newNote.content === undefined)
+      newContent = oldNote.content;
+    let updatedNote = {
+      id: oldNote.id, 
+      date: oldNote.date,
+      title: newTitle,
+      content: newContent,
+      isPinned: oldNote.isPinned};
+
+    noteService
+    .update(noteId, updatedNote)
+    .then(returnedNote => {
+      setNotes(notes.map(note => note.id !== noteId ? note : returnedNote))
+    });
+  }
+
+  const deleteNote = (e) => {
+    e.preventDefault();
+    let noteId = e.target.dataset.id;
+
+    noteService
+      .remove(noteId)
+      .then(setNotes(notes.filter(note => note.id !== noteId)))
+  }
+
   return (
     <div>
       <Router>
         <Switch>
-          <Route exact path="/" render={() => <HomePage notes={notes} />} />
-          <Route exact path="/notes/:id" render={({match}) => <NotePage note={noteById(match.params.id)} togglePinned={() => togglePinned(match.params.id)} />} />
+          <Route exact path="/" render={() => <HomePage notes={notes} deleteNote={deleteNote} />} />
+          <Route exact path="/notes/:id" render={({match}) => <NotePage note={noteById(match.params.id)} togglePinned={() => togglePinned(match.params.id)} onTitleChange={handleTitleChange} onContentChange={handleContentChange} updateNote={updateNote} />} />
           <Route exact path="/new-note" render={() => <NewNotePage onTitleChange={handleTitleChange} onContentChange={handleContentChange} onClick={addNote} />} />
         </Switch>
       </Router>

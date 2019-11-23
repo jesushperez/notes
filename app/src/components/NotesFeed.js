@@ -19,10 +19,10 @@ const FeedTitle = styled.h2`
   padding-left: 15px;
 `;
 
-const NotesFeed = ({title, notes }) => {
+const NotesFeed = ({title, notes, deleteNote }) => {
   
   let noteList = notes.map(note => {
-    return <Note key={note.id} note={note}/>
+    return <Note key={note.id} note={note} deleteNote={deleteNote} />
   });
 
   return (

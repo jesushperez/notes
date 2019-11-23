@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { primary, secondary, customWhite, fontBody } from './Variables';
 import { Wrapper, Title, Content, ButtonsWrapper} from './PageStyles/NoteStyles';
 
-const Note = ({note}) => {
+const Note = ({note, deleteNote}) => {
 
 const ViewButton = styled(Link)`
   color: ${customWhite};
@@ -60,6 +60,8 @@ const DeleteButton = styled.button`
           to={`/notes/${note.id}`} 
           tabIndex={0}>View</ViewButton>
         <DeleteButton 
+          data-id={note.id}
+          onClick={deleteNote}
           btnColor={secondary} 
           flexGrow='1' 
           tabIndex={0}>X</DeleteButton>
