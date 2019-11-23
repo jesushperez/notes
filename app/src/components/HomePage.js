@@ -47,6 +47,33 @@ const Home = ({notes, deleteNote}) => {
 
   let pinnedNotes = pinnedFilter(notes, true);
   let otherNotes = pinnedFilter(notes, false);
+  let showPinned, showOthers;
+
+  if(pinnedNotes.length === 0 && otherNotes.length === 0) {
+    showPinned = '';
+    showOthers = '';
+  } else if (pinnedNotes.length === 0 && otherNotes.length > 0) {
+    showPinned = '';
+    showOthers = <NotesFeed 
+                    title="Notes" 
+                    notes={otherNotes} 
+                    deleteNote={deleteNote} />;
+  } else if (pinnedNotes.length > 0 && otherNotes.length === 0) {
+    showPinned = <NotesFeed 
+                    title="Pinned Notes" 
+                    notes={pinnedNotes} 
+                    deleteNote={deleteNote} />;
+    showOthers = '';
+  } else {
+    showPinned = <NotesFeed 
+                    title="Pinned Notes" 
+                    notes={pinnedNotes} 
+                    deleteNote={deleteNote} />;
+    showOthers = <NotesFeed 
+                    title="Other Notes" 
+                    notes={otherNotes} 
+                    deleteNote={deleteNote} />;
+  }
 
   return(
     <div>
@@ -55,8 +82,8 @@ const Home = ({notes, deleteNote}) => {
         <NewNote to="/new-note">New Note</NewNote>
         <Search type="text" placeholder="&#x1F50D; Search a note" />
       </Menus>
-      <NotesFeed title="Pinned Notes" notes={pinnedNotes} deleteNote={deleteNote} />
-      <NotesFeed title="Other Notes" notes={otherNotes} deleteNote={deleteNote} />
+      {showPinned}
+      {showOthers}
     </div>
   );
 }
