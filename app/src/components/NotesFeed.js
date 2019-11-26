@@ -1,23 +1,6 @@
 import React from 'react';
 import Note from './Note';
-import styled from 'styled-components';
-import { fontTitle, customBlack } from './Variables';
-
-const ListWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 15px;
-  align-items: stretch;
-`;
-
-const FeedTitle = styled.h2`
-  font-family: ${fontTitle};
-  color: ${customBlack};
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  margin-top: 35px;
-  padding-left: 15px;
-`;
+import { FeedTitle, ListWrapper } from './PageStyles/NotesFeedStyles';
 
 const NotesFeed = ({title, notes, deleteNote }) => {
   

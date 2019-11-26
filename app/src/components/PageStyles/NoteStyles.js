@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { primary, fontTitle, fontBody, customBlack } from '../Variables';
+import { Link } from 'react-router-dom';
+import { primary, secondary, fontTitle, fontBody, customBlack, customWhite } from '../Variables';
 
 const Wrapper = styled.div`
   background-color: #FFFFFF;
@@ -59,4 +60,42 @@ const ButtonsWrapper = styled.div`
   margin-top: auto;
 `;
 
-export {Wrapper, Title, Content, ButtonsWrapper};
+const ViewButton = styled(Link)`
+  color: ${customWhite};
+  transition-duration: .3s;
+  border: 2px solid ${primary};
+  background-color: ${primary};
+  flex-grow: 3;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: auto;
+  font-family: ${fontBody};
+
+  &:hover {
+    cursor: pointer;
+    color: ${primary};
+    background-color: ${customWhite};
+  }
+`;
+
+const DeleteButton = styled.button`
+  color: ${customWhite};
+  transition-duration: .3s;
+  border: 2px solid ${secondary};
+  background-color: ${secondary};
+  flex-grow: ${1};
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: auto;
+  font-family: ${fontBody};
+
+  &:hover {
+    cursor: pointer;
+    color: ${secondary};
+    background-color: ${customWhite};
+  }
+`;
+
+export { Wrapper, Title, Content, ButtonsWrapper, ViewButton, DeleteButton };

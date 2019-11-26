@@ -4,7 +4,6 @@ import { Wrapper, BackLink, PinButton, NoteTitle, NoteContent, SaveButton } from
 const NotePage = ({note, togglePinned, onTitleChange, onContentChange, updateNote}) => {
   let pinLabel = note.isPinned ? 'Unpin Note' : 'Pin Note';
   
-  
   return(
     <Wrapper>
       <BackLink className="note-page__back-btn" to="/">back</BackLink>

@@ -3,7 +3,6 @@ import { Wrapper, InputTitle, InputContent, BackLink, SaveButton } from './PageS
 
 const NewNotePage = ({onTitleChange, onContentChange, onClick}) => {
 
-
   return (
     <Wrapper>
       <BackLink to="/">back</BackLink>
