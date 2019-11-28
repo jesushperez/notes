@@ -14,9 +14,10 @@ public class NoteController {
     private NoteService noteService;
 
     // Adds new note
-    @RequestMapping(method= RequestMethod.POST, value="/notes")
-    public void addNote(@RequestBody Note note) {
+    @RequestMapping(method=RequestMethod.POST, value="/notes", consumes="application/json", produces="application/json")
+    public Note addNote(@RequestBody Note note) {
         noteService.addNote(note);
+        return note;
     }
 
     // Returns all notes
@@ -33,14 +34,17 @@ public class NoteController {
 
     // Updates individual note
     @RequestMapping(method=RequestMethod.PUT, value="/notes/{id}")
-    public void updateNote(@RequestBody Note note) {
+    public Note updateNote(@RequestBody Note note) {
         noteService.updateNote(note);
+        return note;
     }
 
     // Deletes individual note
     @RequestMapping(method=RequestMethod.DELETE, value="/notes/{id}")
-    public void deleteNote(@PathVariable String id) {
+    public Note deleteNote(@PathVariable String id) {
+        Note deletedNote = noteService.getNote(id);
         noteService.deleteNote(id);
+        return deletedNote;
     }
 
 }
