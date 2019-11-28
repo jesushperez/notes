@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Wed Nov 27 23:28:20 CST 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016e-b07b-49da-00000572d570 
+Thu Nov 28 15:19:00 CST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016e-b3e1-a619-0000042f56c0 
 on database directory memory:/home/jesus/Desktop/notes/testdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@77556fd 
 Loaded from file:/home/jesus/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Amazon.com Inc.
