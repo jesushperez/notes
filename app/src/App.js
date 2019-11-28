@@ -70,9 +70,6 @@ function App() {
     autoExpand(event.target);
   }, false);
 
-  const noteById = (id) =>
-    notes.find(note => note.id.toString() === id.toString());
-
   const togglePinned = id => {
     let note = notes.find(note => note.id === id);
     let changedNote = {...note, isPinned: !note.isPinned};
@@ -135,7 +132,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" render={() => <HomePage notes={filteredNoteList} deleteNote={deleteNote} handleSearchChange={handleSearchChange} searchTerm={searchTerm} />} />
-          <Route exact path="/notes/:id" render={({match}) => <NotePage note={noteById(match.params.id)} togglePinned={() => togglePinned(match.params.id)} onTitleChange={handleTitleChange} onContentChange={handleContentChange} updateNote={updateNote} />} />
+          <Route exact path="/notes/:id" render={() => <NotePage togglePinned={togglePinned} onTitleChange={handleTitleChange} onContentChange={handleContentChange} updateNote={updateNote} />} />
           <Route exact path="/new-note" render={() => <NewNotePage onTitleChange={handleTitleChange} onContentChange={handleContentChange} onClick={addNote} />} />
         </Switch>
       </Router>

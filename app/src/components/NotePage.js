@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import noteService from '../services/notes';
 import { Wrapper, BackLink, PinButton, NoteTitle, NoteContent, SaveButton } from './PageStyles/NotePageStyles';
 
-const NotePage = ({note, togglePinned, onTitleChange, onContentChange, updateNote}) => {
-  let pinLabel = note.isPinned ? 'Unpin Note' : 'Pin Note';
+const NotePage = ({ togglePinned, onTitleChange, onContentChange, updateNote}) => {
+
+  let { id } = useParams();
+  const [ note, setNote ] = useState({});
+  const [ pinStatus, setPinStatus ] = useState();
+  
+  useEffect(() => {
+    noteService
+      .getById(id)
+      .then(returnedNote => {
+        setNote(returnedNote);
+        setPinStatus(returnedNote.isPinned)
+      })
+  }, [id]);
+  
+  let togglePin = () => {
+    togglePinned(id);
+    setPinStatus(!pinStatus);
+  }
+
+  let pinLabel = pinStatus ? 'Unpin Note' : 'Pin Note';
   
   return(
     <Wrapper>
       <BackLink className="note-page__back-btn" to="/">back</BackLink>
 
-      <PinButton onClick={togglePinned}>{ pinLabel }</PinButton>
+      <PinButton onClick={togglePin}>{ pinLabel }</PinButton>
 
       <NoteTitle 
         wrap="soft" 
