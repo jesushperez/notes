@@ -44,8 +44,8 @@ function App() {
       let noteObject = {id: shortid.generate(), "date": today, ...newNote, isPinned: false};
       noteService
         .create(noteObject)
-        .then(returnedNotes => {
-          setNotes(notes.concat(returnedNotes));
+        .then(returnedNote => {
+          setNotes(notes.concat(returnedNote));
           setNewNote('');
         })      
     }
@@ -76,9 +76,9 @@ function App() {
 
     noteService
       .update(id, changedNote)
-      .then(returnedNote => {
-        setNotes(notes.map(note => note.id !== id ? note : returnedNote))
-      });
+      .then(
+        setNotes(notes.map(note => note.id !== id ? note : changedNote))
+      );
   }
 
   const updateNote = (e) => {
@@ -111,7 +111,9 @@ function App() {
 
     noteService
       .remove(noteId)
-      .then(setNotes(notes.filter(note => note.id !== noteId)))
+      .then(returnedNote => {
+        setNotes(notes.filter(note => note.id !== returnedNote.id))
+      })
   }
 
   const filteredNoteList = notes.filter(note => {
