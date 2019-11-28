@@ -119,12 +119,18 @@ function App() {
   const filteredNoteList = notes.filter(note => {
     let title = note.title;
     let content = note.content;
-    if (title !== undefined)
+    
+    if(title === undefined || title === null)
+      title = '';
+    else 
       title = title.toLowerCase();
-    if (content !== undefined)
-      content = content.toLowerCase();
-    let searchable = title + ' ' + content;
 
+    if (content === undefined || content === null)
+      content = '';
+    else
+      content = content.toLowerCase();
+
+    let searchable = title + ' ' + content;
     let searched = searchTerm.toLowerCase();
     return searchable.includes(searched);
   });

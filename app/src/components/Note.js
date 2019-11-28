@@ -6,7 +6,9 @@ const Note = ({note, deleteNote}) => {
 
   // Truncates body content of long notes to keep note previews short
   let content = note.content;
-  if (content !== undefined) {
+  if( content === undefined || content === null)
+    content = '';
+  else {
     if(content.length > 100)
       content = content.substring(0, 99) + '...';
   }
